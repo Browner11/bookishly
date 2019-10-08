@@ -18,6 +18,17 @@ csv.each do |row|
   book_genres.each do |genre|
     Genre.find_or_create_by(name: genre)
   end
+
+  book_authors = row['book_authors'].to_s.split('|')
+  book_authors.each do |author|
+    Author.find_or_create_by(name: author)
+  end
+
+  book_formats = row['book_format'].to_s.split('|')
+  book_formats.each do |format|
+    Format.find_or_create_by(name: format)
+  end
 end
 
 puts "Genres added: #{Genre.count}"
+puts "Authors added: #{Author.count}"
