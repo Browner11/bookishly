@@ -20,4 +20,4 @@ csv.each do |row|
   end
 end
 
-puts Genre.count
+puts "Genres added: #{Genre.count}"
