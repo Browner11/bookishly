@@ -32,3 +32,4 @@ end
 
 puts "Genres added: #{Genre.count}"
 puts "Authors added: #{Author.count}"
+puts "Formats added: #{Format.count}"

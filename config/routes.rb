@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :genres, only: %i[index]
 
   resources :authors, only: %i[index]
+
+  resources :formats, only: %i[index]
 end
