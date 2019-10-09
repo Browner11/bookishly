@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class BooksController < ApplicationController
   def index
-    @books = Book.all # This instance vaariable will be shared with the view
+    @books = Book.page params[:page]
   end
 end
