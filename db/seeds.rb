@@ -7,37 +7,46 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Book.destroy_all
 Genre.destroy_all
+Author.destroy_all
+Format.destroy_all
 
 require 'csv'
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'book_data.csv'))
 csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
 csv.each do |row|
+  book = Book.new
+  book.name = row['book_title']
+  book.num_pages = row['book_pages']
 
   # convert to string first to bypass 'undefined method split for nil' error
-  book_genres = row['genres'].to_s.split('|')
-  book_genres.each do |genre|
-    Genre.find_or_create_by(name: genre)
+  if row['genres'].nil?
+    g = Genre.find_or_create_by(name: 'Novels')
+    book.genre_id = g.id
+  else
+    book_genres = row['genres'].to_s.split('|')
+    book_genres.each do |genre|
+      g = Genre.find_or_create_by(name: genre)
+      book.genre_id = g.id
+    end
   end
 
   book_authors = row['book_authors'].to_s.split('|')
   book_authors.each do |author|
-    Author.find_or_create_by(name: author)
+    a = Author.find_or_create_by(name: author,
+                                 address: Faker::Address.full_address)
+    book.author_id = a.id
   end
 
   book_formats = row['book_format'].to_s.split('|')
   book_formats.each do |format|
-    Format.find_or_create_by(name: format)
+    f = Format.find_or_create_by(name: format)
+    book.format_id = f.id
   end
 
-  books = Book.create(
-    name: row['book_title'],
-    num_pages: row['book_pages'],
-    genre_id:,
-    author_id:,
-    format_id:
-  )
-
+  book.save
+  puts "#{book.name} saved."
 end
 
 puts "Genres added: #{Genre.count}"
