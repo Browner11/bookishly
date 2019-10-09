@@ -13,6 +13,7 @@ require 'csv'
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'book_data.csv'))
 csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
 csv.each do |row|
+
   # convert to string first to bypass 'undefined method split for nil' error
   book_genres = row['genres'].to_s.split('|')
   book_genres.each do |genre|
@@ -28,8 +29,18 @@ csv.each do |row|
   book_formats.each do |format|
     Format.find_or_create_by(name: format)
   end
+
+  books = Book.create(
+    name: row['book_title'],
+    num_pages: row['book_pages'],
+    genre_id:,
+    author_id:,
+    format_id:
+  )
+
 end
 
 puts "Genres added: #{Genre.count}"
 puts "Authors added: #{Author.count}"
 puts "Formats added: #{Format.count}"
+puts "Books added: #{Book.count}"

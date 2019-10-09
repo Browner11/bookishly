@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :authors, only: %i[index]
 
   resources :formats, only: %i[index]
+
+  resources :books, only: %i[index]
 end
