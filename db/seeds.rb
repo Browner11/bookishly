@@ -23,12 +23,12 @@ csv.each do |row|
   # convert to string first to bypass 'undefined method split for nil' error
   if row['genres'].nil?
     g = Genre.find_or_create_by(name: 'Novels')
-    book.genre_id = g.id
+    book.genre_ids << g.id
   else
     book_genres = row['genres'].to_s.split('|')
     book_genres.each do |genre|
       g = Genre.find_or_create_by(name: genre)
-      book.genre_id = g.id
+      book.genre_ids = book.genre_ids << g.id
     end
   end
 
@@ -36,7 +36,7 @@ csv.each do |row|
   book_authors.each do |author|
     a = Author.find_or_create_by(name: author,
                                  address: Faker::Address.full_address)
-    book.author_id = a.id
+    book.author_ids = book.author_ids << a.id
   end
 
   book_formats = row['book_format'].to_s.split('|')

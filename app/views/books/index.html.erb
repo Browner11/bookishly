@@ -1,5 +1,7 @@
 <h1>Books</h1>
 <%= paginate @books %>
 <% @books.each do |book| %>
-  <h2><%= book.name %></h2>
+  <h2><%= book.name %> by
+      <%= book.author.name %>%
+  </h2>
 <% end %>
