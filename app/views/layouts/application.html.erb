@@ -8,14 +8,17 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
   <header>
-    <nav>
-      <ul>
-        <li><%= link_to 'Home', root_path %></li>
-        <li><%= link_to 'About', permalink_path(permalink: 'about-us') %></li>
+    <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Bookishly</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="/static/about-us">About Us</a></li>
       </ul>
+    </div>
     </nav>
   </header>
     <%= yield %>
