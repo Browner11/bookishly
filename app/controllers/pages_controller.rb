@@ -1,5 +1,19 @@
 class PagesController < ApplicationController
+
+  http_basic_authenticate_with name: "admin", password: "password"
+
   before_action :set_page, only: [:show, :edit, :update, :destroy]
+
+  # GET /static/:permalink
+  def permalink
+    @page = Page.find_by_permalink(params[:permalink])
+
+    if @page
+      render :show
+    else
+      redirect_to root_path
+    end
+  end
 
   # GET /pages
   # GET /pages.json
