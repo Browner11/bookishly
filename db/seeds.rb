@@ -11,6 +11,7 @@ Book.destroy_all
 Genre.destroy_all
 Author.destroy_all
 Format.destroy_all
+Page.destroy_all
 
 require 'csv'
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'book_data.csv'))
@@ -48,6 +49,8 @@ csv.each do |row|
   book.save
   puts "#{book.name} saved."
 end
+
+Page.create(title: 'About Us', content: 'Please fill this in.', permalink: 'about-us')
 
 puts "Genres added: #{Genre.count}"
 puts "Authors added: #{Author.count}"
