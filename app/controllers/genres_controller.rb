@@ -4,6 +4,10 @@ class GenresController < ApplicationController
   def index
     @genres = Genre.all # This instance vaariable will be shared with the view
   end
+
+  def show
+    @genre = Genre.find(params[:id])
+  end
   # The associated view is auto-magically loaded with access to the @vars
   # index action maps to: app/views/houses/index.html.erb
 end
