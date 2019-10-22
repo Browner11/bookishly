@@ -4,11 +4,13 @@
   <div class='row'>
     <% group.each do |book| %>
       <div class='col-md-4'>
+        <%= link_to book, :action => 'go' do %>
         <div class='card'>
           <h5><%= book.name %></h5>
-          <p><img src='<%= book.image %>'/></p>
+          <p><img src='<%= book.image %>' alt='<%= book.name %>'/></p>
           <h5><%= book.author.first.name %></h5>
         </div>
+        <% end %>
       </div>
       <% end %>
   </div>

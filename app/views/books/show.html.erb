@@ -1,1 +1,33 @@
-<h1><%= @book.name %></h1>
+
+<div class='row'>
+  <div class='col-md-6'>
+    <div class='bookContainer'>
+      <p><img src='<%= @book.image %>' alt='<%= @book.name %>'/></p>
+    </div>
+  </div>
+  <div class='col-md-6'>
+    <div class='bookContainer'>
+      <h1><%= link_to @book.name, @book %></h1>
+
+      <h3>Author(s):</h3>
+      <h5>
+      <% @book.author.each do |auth| %>
+        <%= auth.name %>
+      <% end %>
+      </h5>
+
+      <h3>Format:</h3>
+      <h5>
+        <%= @book.format.name %>
+      </h5>
+
+      <h3>Genres:</h3>
+      <h5>
+      <% @book.genre.each do |gen| %>
+        <%= link_to gen.name, genre_path(gen) %>
+      <% end %>
+      </h5>
+    </div>
+  </div>
+</div>
+

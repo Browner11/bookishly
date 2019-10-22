@@ -21,9 +21,14 @@ body {
   background-color: darkcyan;
 }
 
-a {
+a, a:visited {
   color: black;
 }
+
+a:hover {
+  color: white
+}
+
 
 .card {
   width: 375px;
@@ -31,9 +36,20 @@ a {
   margin: 10px;
   border: 2px solid black;
   text-align: center;
+  background-color: #19535F;
 }
 
 .card img {
   width: 65%;
+  height: auto;
+}
+
+.bookContainer {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.bookContainer img {
+  width: 70%;
   height: auto;
 }
