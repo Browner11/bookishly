@@ -1,5 +1,11 @@
 <h1>Authors</h1>
 
-<% @authors.each do |author| %>
-  <h2><%= author.name %></h2>
+<% @authors.in_groups_of(3, false).each do |group| %>
+  <div class='row'>
+    <% group.each do |author| %>
+      <div class='col-md-4'>
+        <h2><%= link_to author.name, author_path(author) %></h2>
+      </div>
+    <% end %>
+  </div>
 <% end %>

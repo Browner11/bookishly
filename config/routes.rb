@@ -14,5 +14,7 @@ Rails.application.routes.draw do
 
   resources :books, only: %i[index show]
 
+  get '/search', to: 'books#search'
+
   root to: 'books#index'
 end

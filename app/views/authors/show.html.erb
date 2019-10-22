@@ -1,0 +1,11 @@
+<h1><%= @author.name %></h1>
+
+<% @author.books.distinct.in_groups_of(3, false).each do |group| %>
+  <div class='row'>
+  <% group.each do |book| %>
+    <div class='col-md-4'>
+      <p><%= link_to book.name, book %></p>
+    </div>
+  <% end %>
+  </div>
+<% end %>

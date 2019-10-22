@@ -1,0 +1,5 @@
+<h1>Search Results</h1>
+
+<% @booksearch.each do |book| %>
+  <p><%= link_to book.name, book %></p>
+<% end%>

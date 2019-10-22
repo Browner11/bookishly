@@ -12,7 +12,7 @@
       <h3>Author(s):</h3>
       <h5>
       <% @book.author.each do |auth| %>
-        <%= auth.name %>
+        <%= link_to auth.name, author_path(auth) %>
       <% end %>
       </h5>
 
