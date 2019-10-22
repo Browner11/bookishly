@@ -10,6 +10,6 @@ class BooksController < ApplicationController
   end
 
   def search
-    @booksearch = Book.where("name LIKE ?", "%" + params[:q] + "%")
+    @booksearch = Book.joins(:author).where("books.name LIKE ? OR authors.name LIKE ?", "%" + params[:q] + "%", "%" + params[:q] + "%")
   end
 end

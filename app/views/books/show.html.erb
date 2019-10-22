@@ -12,7 +12,7 @@
       <h3>Author(s):</h3>
       <h5>
       <% @book.author.each do |auth| %>
-        <%= link_to auth.name, author_path(auth) %>
+        <%= link_to auth.name, author_path(auth) %><br>
       <% end %>
       </h5>
 
@@ -24,7 +24,7 @@
       <h3>Genres:</h3>
       <h5>
       <% @book.genre.each do |gen| %>
-        <%= link_to gen.name, genre_path(gen) %>
+        <%= link_to gen.name, genre_path(gen) %><br>
       <% end %>
       </h5>
     </div>
