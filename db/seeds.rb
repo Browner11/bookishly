@@ -46,6 +46,8 @@ csv.each do |row|
     book.format_id = f.id
   end
 
+  book.image = row['image_url']
+
   book.save
   puts "#{book.name} saved."
 end

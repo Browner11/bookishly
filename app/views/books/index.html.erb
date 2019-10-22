@@ -4,7 +4,11 @@
   <div class='row'>
     <% group.each do |book| %>
       <div class='col-md-4'>
-        <h4><%= book.name %></h4>
+        <div class='card'>
+          <h5><%= book.name %></h5>
+          <p><img src='<%= book.image %>'/></p>
+          <h5><%= book.author.first.name %></h5>
+        </div>
       </div>
       <% end %>
   </div>
