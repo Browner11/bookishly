@@ -1,0 +1,11 @@
+<h1><%= @genre.name %></h1>
+
+<% @genre.books.distinct.in_groups_of(3, false).each do |group| %>
+  <div class='row'>
+  <% group.each do |book| %>
+    <div class='col-md-4'>
+      <p><%=  book.name %></p>
+    </div>
+  <% end %>
+  </div>
+<% end %>

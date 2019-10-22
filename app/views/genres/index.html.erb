@@ -1,5 +1,11 @@
 <h1>Book Genres</h1>
 
-<% @genres.each do |genre| %>
-  <h2><%= genre.name %></h2>
+<% @genres.in_groups_of(3, false).each do |group| %>
+  <div class='row'>
+    <% group.each do |genre| %>
+      <div class='col-md-4'>
+        <h2><%= link_to genre.name, genre_path(genre) %></h2>
+      </div>
+    <% end %>
+  </div>
 <% end %>
